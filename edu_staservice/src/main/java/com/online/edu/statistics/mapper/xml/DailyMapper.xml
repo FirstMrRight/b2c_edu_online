@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.online.edu.statistics.mapper.DailyMapper">
+ <insert id="cusNum">
+    INSERT into
+     statistics_daily
+      (id,
+      date_calculated,
+      register_num,
+      login_num,
+      video_view_num,
+      gmt_create,
+      gmt_modified)
+       VALUES
+       (#{id},
+       <if test="date_calculated!=null">
+        #{date_calculated},
+       </if>
+       <if test="register_num!=null">
+        #{register_num},
+       </if>
+       <if test="login_num!=null">
+        #{login_num},
+       </if>
+       <if test="video_view_num!=null">
+        #{video_view_num},
+       </if>
+       ,NOW()
+       ,NOW())
+</insert>
+</mapper>
